@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t,b1,b2,b3;
+	cin>>t;
+	while(t--){
+	    if((b1+b2+b3)>=2)
+	    cout<<"Water filling time"<<endl;
+	    
+	    else
+	    cout<<"Not now"<<endl;
+	}
+	return 0;
+}
