@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;  
+    while (t--) {
+        int n, x;
+        cin >> n >> x;    
+
+        vector<int> A(n);
+        for (int i = 0; i < n; i++) {
+            cin >> A[i];  
+        
+        int curr_ppl = x;
+        int max_ppl = x;  
+        for (int i = 0; i < n; i++) {
+            curr_ppl += A[i];  
+            max_ppl = max(max_ppl, curr_ppl);  
+      }
+        
+        cout << max_ppl << endl;   
+    }
+    return 0;
+}
