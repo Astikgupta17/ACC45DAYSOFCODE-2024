@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main() {
+    int T; // Number of test cases
+    cin >> T;
+
+    while (T--) {
+        int N, K; // Number of people and initial amount in ATM
+        cin >> N >> K;
+
+        vector<int> withdrawals(N);
+        for (int i = 0; i < N; i++) {
+            cin >> withdrawals[i]; // Read withdrawal amounts
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (K >= withdrawals[i]) {
+                cout << "YES" << endl; // Successful withdrawal
+                K -= withdrawals[i];    // Deduct amount from ATM
+            } else {
+                cout << "NO" << endl;   // Withdrawal failed
+            }
+        }
+    }
+
+    return 0;
+}
