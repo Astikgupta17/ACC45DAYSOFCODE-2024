@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+bool isPseudoSorted(const vector<int>& A) {
+    int N = A.size();
+    int violationCount = 0;
+    int violationIndex = -1;
+
+    // Check for violations
+    for (int i = 0; i < N - 1; i++) {
+        if (A[i] > A[i + 1]) {
+            violationCount++;
+            violationIndex = i;
+        }
+        if (violationCount > 1) {
+            return false; // More than one violation
+        }
+    }
+
+    if (violationCount == 0) {
+        return true; // Already sorted
+    }
+
+    // Check if swapping the violating pair fixes the array
+    // Violation is at index violationIndex
+    int i = violationIndex;
+    
+    // Swap A[i] and A[i+1]
+    // Check if the array becomes sorted after this swap
+    if (i > 0 && A[i - 1] > A[i + 1]) {
+        return false; // A[i-1] > A[i+1] means the swap does not fix the order
+    }
+    if (i + 2 < N && A[i] > A[i + 2]) {
+        return false; // A[i] > A[i+2] means the swap does not fix the order
+    }
+    
+    return true; // The swap makes the array sorted
+}
+
+int main() {
+    int T;
+    cin >> T;
+    
+    while (T--) {
+        int N;
+        cin >> N;
+        vector<int> A(N);
+        for (int i = 0; i < N; i++) {
+            cin >> A[i];
+        }
+        
+        if (isPseudoSorted(A)) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+
+    return 0;
+}
