@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t,c,i,n,f;
+	cin>>t;
+	while(t--){
+	    cin>>n;
+	    int p[n];
+	    
+	    for(int i=0;i<n;i++){
+	        cin>>p[i];
+	    }
+	    
+	    for(i=0;i<n;i++){
+	        c= 0;
+	        for(j=0;j<n;j++){
+	            if(p[i]==p[j])
+	            c+=1;
+	        }
+	        if(p[i]!=c)
+	        break;
+	    }
+	    cout<<"Yes"<<endl;
+	}
+	return 0;
+}
