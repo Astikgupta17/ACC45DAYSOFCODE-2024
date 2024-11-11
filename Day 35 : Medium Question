@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, x;
+        cin >> n >> x;
+        
+        vector<int> a(n), b(n);
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        for (int i = 0; i < n; i++) {
+            cin >> b[i];
+        }
+
+        int acount = 0; 
+        vector<int> votesNeeded;
+
+        
+        for (int i = 0; i < n; i++) {
+            if (a[i] > b[i]) {
+                acount++; // A already wins this state
+            } else {
+                votesNeeded.push_back(b[i] - a[i] + 1); // Votes 
+            }
+        }
+
+        
+        sort(votesNeeded.begin(), votesNeeded.end());
+
+        
+        for (int v : votesNeeded) {
+            if (x >= v) {
+                x -= v;       
+                acount++;    
+            } else {
+                break; 
+            }
+        }
+
+        
+        int requiredWins = (n / 2) + 1;
+        if (acount >= requiredWins) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+    return 0;
+}
