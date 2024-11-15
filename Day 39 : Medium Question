@@ -1,0 +1,39 @@
+#include <iostream>
+#include <algorithm>
+#include <math.h>
+#include <string>
+#include <vector>
+#include <map>
+#define ll long long
+using namespace std;
+
+int main(){
+    ios_base::sync_with_stdio(false); cin.tie(NULL);
+
+    int t;
+    cin >> t;
+    while (t--){
+        int n;
+        cin >> n;
+        map<int,int> m;
+
+        int ppl=0,max=0;
+
+        for (int i=0; i<n; i++){
+            int e;
+            cin >> e;
+            m[e]++;
+
+            if (m[e] % 2) ppl++;
+            else ppl--;
+
+            if (ppl > max) max = ppl;
+        }
+
+        // for (auto i:m){
+        //     if (i.second % 2) ppl++;
+        // }
+
+        cout << max << "\n";
+    }
+}
